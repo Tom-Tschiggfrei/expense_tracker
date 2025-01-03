@@ -1,0 +1,5 @@
+database_path: sqlite:///bank_statements.db
+
+transactions_folder: /home/tom/Downloads/Kontoauszuege-20250101T185341Z-001/Kontoauszuege
+
+account_holder: Tom Tschiggfrei

@@ -19,6 +19,7 @@ wheels/
 .installed.cfg
 *.egg
 
+settings.flake8
 # Jupyter
 .ipynb_checkpoints
 *.ipynb_checkpoints/

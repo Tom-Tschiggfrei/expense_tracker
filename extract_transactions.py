@@ -1,4 +1,4 @@
-from transaction import Transaction
+from transaction import Transaction, process_bank_statement
 from datetime import datetime
 from pypdf import PdfReader
 import yaml
@@ -65,7 +65,10 @@ def extract_transactions(config: dict, account_holder: str) -> list[Transaction]
     for month_year, transaction_statements in monthly_transactions.items():
         for transaction_statement in transaction_statements:
             logger.info(f"Processing transaction:\n\n{transaction_statement}\n")
-            transaction = Transaction.from_account_statement(transaction_statement, account_holder, year)
+            transaction_data = process_bank_statement(transaction_statement, account_holder, year)
+            for data in transaction_data:
+                if data is not None:
+                    transaction = Transaction.from_transaction_dict(data)
             transactions.append(transaction)
 
     return transactions
